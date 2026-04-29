@@ -3,216 +3,200 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>আমার রিতুর জন্য - Forever Love</title>
+    <title>রিতু - আমার চিরকালের ভালোবাসা</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Hind+Siliguri:wght@400;700&display=swap');
 
-        :root {
-            --primary: #ff2d55;
-            --glass: rgba(255, 255, 255, 0.85);
-            --shadow: 0 15px 35px rgba(255, 45, 85, 0.3);
-        }
-
         body {
-            background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
-            background-size: 400% 400%;
-            animation: gradientBG 15s ease infinite;
+            background: #000; /* Dark premium look */
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
             margin: 0;
-            font-family: 'Hind Siliguri', 'Poppins', sans-serif;
+            font-family: 'Hind Siliguri', sans-serif;
             overflow: hidden;
         }
 
-        @keyframes gradientBG {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+        /* God Level Animated Background */
+        .bg-glow {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(255,45,85,0.2) 0%, rgba(0,0,0,1) 80%);
+            z-index: -1;
         }
 
         #main-card {
             text-align: center;
-            background: var(--glass);
-            backdrop-filter: blur(15px);
-            padding: 30px;
-            border-radius: 40px;
-            border: 2px solid rgba(255, 255, 255, 0.5);
-            box-shadow: var(--shadow);
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(25px);
+            padding: 40px 20px;
+            border-radius: 50px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 0 50px rgba(255, 45, 85, 0.4);
             width: 85%;
             max-width: 400px;
-            z-index: 10;
             position: relative;
+            transition: 0.5s;
         }
 
         #title {
-            color: var(--primary);
+            color: #fff;
             font-family: 'Pacifico', cursive;
-            font-size: 30px;
-            margin-bottom: 10px;
-            line-height: 1.4;
+            font-size: 28px;
+            text-shadow: 0 0 15px #ff2d55;
+            margin-bottom: 20px;
         }
 
-        /* God Level Heart Frame */
+        /* Next Gen Heart Image Frame */
         #love-frame {
             display: none;
-            width: 240px;
-            height: 220px;
+            width: 250px;
+            height: 250px;
             margin: 20px auto;
             position: relative;
             animation: heartbeat 1s infinite alternate;
-        }
-
-        #love-frame .img-mask {
-            width: 100%;
-            height: 100%;
-            background: #ff2d55;
-            clip-path: path('M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z');
-            transform: scale(10.5);
-            transform-origin: center;
-            position: absolute;
-            top: 0; left: 0;
-            z-index: 1;
         }
 
         #love-frame img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            clip-path: inherit;
-            position: relative;
-            z-index: 2;
-            border: 4px solid white;
+            /* Ultra Sharp Heart Shape */
+            clip-path: path('M12 21.65l-1.45-1.32C5.4 15.66 2 12.58 2 8.8c0-3.08 2.42-5.5 5.5-5.5 1.74 0 3.41.81 4.5 2.09C13.09 4.11 14.76 3.3 16.5 3.3c3.08 0 5.5 2.42 5.5 5.5 0 3.78-3.4 6.86-8.55 11.54L12 21.65z');
+            transform: scale(11);
+            transform-origin: top left;
+            border: 2px solid #ff2d55;
         }
 
         @keyframes heartbeat {
-            to { transform: scale(1.1); filter: drop-shadow(0 0 15px #ff2d55); }
+            to { transform: scale(1.08); filter: drop-shadow(0 0 20px #ff2d55); }
         }
 
-        .cat-gif { 
-            width: 180px; 
-            border-radius: 20px; 
-            margin: 15px 0;
-            box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+        .cat-gif { width: 180px; border-radius: 20px; margin-bottom: 20px; }
+
+        .btn-container { display: flex; flex-direction: column; gap: 15px; align-items: center; }
+
+        .yes-btn {
+            background: #ff2d55;
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 10px 20px rgba(255, 45, 85, 0.4);
+            transition: 0.3s;
         }
 
-        .btn-container { 
-            display: flex; 
-            justify-content: center; 
-            gap: 30px; 
-            margin-top: 25px; 
+        .no-btn {
+            background: transparent;
+            color: #ccc;
+            border: 1px solid #555;
+            padding: 8px 20px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 14px;
         }
-
-        .action-btn { 
-            width: 80px; 
-            cursor: pointer; 
-            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
-        }
-
-        .action-btn:hover { transform: scale(1.2); }
 
         .success-text {
             display: none;
-            color: var(--primary);
-            font-size: 24px;
+            color: #ff2d55;
+            font-size: 22px;
             font-weight: bold;
             margin-top: 20px;
-            animation: fadeIn 1s;
+            text-shadow: 0 0 10px rgba(255,45,85,0.5);
         }
 
-        /* Particle Effects */
-        .confetti {
+        .heart-particle {
             position: absolute;
-            width: 10px; height: 10px;
-            animation: fall 3s linear forwards;
             pointer-events: none;
+            animation: floatUp 4s linear forwards;
         }
 
-        @keyframes fall {
-            to { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+        @keyframes floatUp {
+            0% { transform: translateY(100vh) scale(0); opacity: 1; }
+            100% { transform: translateY(-10vh) scale(1.5); opacity: 0; }
         }
-
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-
     </style>
 </head>
 <body>
 
+<div class="bg-glow"></div>
+
 <div id="main-card">
-    <h1 id="title">প্রিয় রিতু, <br> তুমি কি আমার ভ্যালেন্টাইন হবে?</h1>
+    <h1 id="title">প্রিয় রিতু, <br> তুমি কি আমার হবে?</h1>
     
-    <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHJpYjR4eHpxeHpxeHpxeHpxeHpxeHpxeHpxeHpxeHpxeHpxeHpxJmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1n/c76IJLufpNwSULPk2m/giphy.gif" 
-         class="cat-gif" id="display-gif">
+    <div id="initial-content">
+        <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHJpYjR4eHpxeHpxeHpxeHpxeHpxeHpxeHpxeHpxeHpxeHpxeHpxJmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1n/c76IJLufpNwSULPk2m/giphy.gif" class="cat-gif">
+        <div class="btn-container">
+            <button class="yes-btn" onclick="activateGodMode()">হ্যাঁ, সারপ্রাইজটি দেখাও!</button>
+            <button class="no-btn" id="noBtn" onmouseover="moveNo()">না</button>
+        </div>
+    </div>
 
     <div id="love-frame">
-        <img src="./1000426483.jpg" onerror="this.src='https://via.placeholder.com/200?text=Photo+Error'">
+        <img src="./1000426483.jpg" onerror="this.src='https://via.placeholder.com/250?text=Photo+Error'">
     </div>
 
-    <div class="btn-container" id="btns">
-        <img src="https://cdn-icons-png.flaticon.com/512/5291/5291043.png" class="action-btn" onclick="celebrate()">
-        <img src="https://cdn-icons-png.flaticon.com/512/5291/5291039.png" class="action-btn" id="noBtn" onmouseover="dodge()">
-    </div>
-
-    <p id="success-msg" class="success-text">আমি তোমাকে অনেক ভালোবাসি রিতু! ❤️<br>তুমিই আমার সব কিছু।</p>
+    <p id="final-msg" class="success-text">আমি তোমাকে অনেক ভালোবাসি রিতু! ❤️<br>তুমিই আমার পুরো পৃথিবী।</p>
 </div>
 
 <script>
-    function celebrate() {
-        // UI Changes
-        document.getElementById('title').innerText = "রিতু, আমি শুধু তোমারই!";
-        document.getElementById('display-gif').style.display = 'none';
-        document.getElementById('btns').style.display = 'none';
+    function activateGodMode() {
+        // UI Transformation
+        document.getElementById('initial-content').style.display = 'none';
         document.getElementById('love-frame').style.display = 'block';
-        document.getElementById('success-msg').style.display = 'block';
+        document.getElementById('final-msg').style.display = 'block';
+        document.getElementById('title').innerText = "আই লাভ ইউ রিতু!";
+        document.getElementById('main-card').style.background = "rgba(255, 255, 255, 0.15)";
 
-        // Start Party Effects
-        setInterval(createConfetti, 100);
-        
-        // Next Gen Voice Sync
-        speak();
+        // Start Infinite Heart Particles
+        setInterval(createParticle, 150);
+
+        // God Level Voice Sync
+        playVoice();
     }
 
-    function speak() {
+    function playVoice() {
         const synth = window.speechSynthesis;
-        // রিতুর জন্য ইমোশনাল বাংলা ভয়েস
         const text = "আমি তোমাকে অনেক ভালোবাসি রিতু। তুমি আমার সব কিছু এবং তুমিই আমার পুরো পৃথিবী। আই লাভ ইউ সো মাচ।";
         const utter = new SpeechSynthesisUtterance(text);
         
         utter.lang = 'bn-BD'; 
-        utter.rate = 0.85;
+        utter.rate = 0.8;
         utter.pitch = 1.1;
 
-        // ব্রাউজারে বাংলা ভয়েস না থাকলে ইংরেজি ফলব্যাক
+        // ব্রাউজার যদি ভয়েস সাপোর্ট না করে তবে ইংরেজি ফলব্যাক
         utter.onerror = () => {
             utter.lang = 'en-US';
             utter.text = "I love you Ritu. You are my everything and my whole world.";
             synth.speak(utter);
         };
 
+        window.speechSynthesis.cancel(); // আগের কোনো ভয়েস থাকলে বন্ধ করবে
         synth.speak(utter);
     }
 
-    function createConfetti() {
-        const c = document.createElement('div');
-        c.classList.add('confetti');
-        c.innerText = ["❤️", "💖", "🌸", "✨", "🔥"][Math.floor(Math.random() * 5)];
-        c.style.left = Math.random() * 100 + "vw";
-        c.style.top = "-5vh";
-        c.style.fontSize = (Math.random() * 20 + 10) + "px";
-        c.style.animationDuration = (Math.random() * 3 + 2) + "s";
-        document.body.appendChild(c);
-        setTimeout(() => c.remove(), 5000);
+    function createParticle() {
+        const heart = document.createElement('div');
+        heart.classList.add('heart-particle');
+        heart.innerHTML = ["❤️", "💖", "✨", "🌸", "💍"][Math.floor(Math.random() * 5)];
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.fontSize = (Math.random() * 20 + 15) + "px";
+        heart.style.animationDuration = (Math.random() * 2 + 2) + "s";
+        document.body.appendChild(heart);
+        setTimeout(() => heart.remove(), 4000);
     }
 
-    function dodge() {
+    function moveNo() {
         const btn = document.getElementById('noBtn');
-        const x = Math.random() * (window.innerWidth - 100);
-        const y = Math.random() * (window.innerHeight - 100);
         btn.style.position = 'fixed';
-        btn.style.left = x + 'px';
-        btn.style.top = y + 'px';
-        document.getElementById('title').innerText = "কেন না বলছো? 😉";
+        btn.style.left = Math.random() * 80 + 'vw';
+        btn.style.top = Math.random() * 80 + 'vh';
+        document.getElementById('title').innerText = "না বলা যাবে না! 😉";
     }
 </script>
 
