@@ -1,14 +1,20 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="bn">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>For My Life Ritu</title>
+    <title>আমার রিতুর জন্য - Forever Love</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@400;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Hind+Siliguri:wght@400;700&display=swap');
+
+        :root {
+            --primary: #ff2d55;
+            --glass: rgba(255, 255, 255, 0.85);
+            --shadow: 0 15px 35px rgba(255, 45, 85, 0.3);
+        }
 
         body {
-            background: linear-gradient(-45deg, #ff9a9e, #fad0c4, #fad0c4, #ff9a9e);
+            background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
             background-size: 400% 400%;
             animation: gradientBG 15s ease infinite;
             display: flex;
@@ -16,7 +22,7 @@
             align-items: center;
             height: 100vh;
             margin: 0;
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Hind Siliguri', 'Poppins', sans-serif;
             overflow: hidden;
         }
 
@@ -28,133 +34,185 @@
 
         #main-card {
             text-align: center;
-            background: rgba(255, 255, 255, 0.9);
+            background: var(--glass);
             backdrop-filter: blur(15px);
             padding: 30px;
-            border-radius: 30px;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+            border-radius: 40px;
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            box-shadow: var(--shadow);
             width: 85%;
-            max-width: 380px;
+            max-width: 400px;
             z-index: 10;
+            position: relative;
         }
 
         #title {
-            color: #ff2d55;
+            color: var(--primary);
             font-family: 'Pacifico', cursive;
-            font-size: 28px;
+            font-size: 30px;
+            margin-bottom: 10px;
+            line-height: 1.4;
         }
 
-        /* Improved Heart Frame */
+        /* God Level Heart Frame */
         #love-frame {
             display: none;
-            width: 200px;
-            height: 200px;
+            width: 240px;
+            height: 220px;
             margin: 20px auto;
             position: relative;
-            animation: heartbeat 1.2s infinite;
+            animation: heartbeat 1s infinite alternate;
+        }
+
+        #love-frame .img-mask {
+            width: 100%;
+            height: 100%;
+            background: #ff2d55;
+            clip-path: path('M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z');
+            transform: scale(10.5);
+            transform-origin: center;
+            position: absolute;
+            top: 0; left: 0;
+            z-index: 1;
         }
 
         #love-frame img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            border-radius: 50%; /* Circle fallback if heart fails */
-            border: 5px solid #ff2d55;
-            mask-image: url('https://upload.wikimedia.org/wikipedia/commons/4/42/Love_Heart_SVG.svg');
-            -webkit-mask-image: url('https://upload.wikimedia.org/wikipedia/commons/4/42/Love_Heart_SVG.svg');
-            mask-size: contain;
-            -webkit-mask-size: contain;
-            mask-repeat: no-repeat;
-            -webkit-mask-repeat: no-repeat;
-            mask-position: center;
-            -webkit-mask-position: center;
+            clip-path: inherit;
+            position: relative;
+            z-index: 2;
+            border: 4px solid white;
         }
 
         @keyframes heartbeat {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.08); }
-            100% { transform: scale(1); }
+            to { transform: scale(1.1); filter: drop-shadow(0 0 15px #ff2d55); }
         }
 
-        .cat-gif { width: 150px; border-radius: 15px; }
+        .cat-gif { 
+            width: 180px; 
+            border-radius: 20px; 
+            margin: 15px 0;
+            box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+        }
 
-        .btn-container { display: flex; justify-content: center; gap: 20px; margin-top: 20px; }
-        .action-btn { width: 70px; cursor: pointer; transition: 0.3s; }
+        .btn-container { 
+            display: flex; 
+            justify-content: center; 
+            gap: 30px; 
+            margin-top: 25px; 
+        }
+
+        .action-btn { 
+            width: 80px; 
+            cursor: pointer; 
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+        }
+
+        .action-btn:hover { transform: scale(1.2); }
 
         .success-text {
             display: none;
-            color: #ff2d55;
-            font-family: 'Pacifico', cursive;
+            color: var(--primary);
             font-size: 24px;
-            margin-top: 15px;
+            font-weight: bold;
+            margin-top: 20px;
+            animation: fadeIn 1s;
         }
 
-        .floating-heart {
+        /* Particle Effects */
+        .confetti {
             position: absolute;
+            width: 10px; height: 10px;
+            animation: fall 3s linear forwards;
             pointer-events: none;
-            animation: floatUp 4s linear infinite;
         }
 
-        @keyframes floatUp {
-            0% { transform: translateY(100vh) scale(0); opacity: 1; }
-            100% { transform: translateY(-10vh) scale(1.2); opacity: 0; }
+        @keyframes fall {
+            to { transform: translateY(100vh) rotate(360deg); opacity: 0; }
         }
+
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
     </style>
 </head>
 <body>
 
 <div id="main-card">
-    <h1 id="title">Hey Queen Ritu, <br> Will you be my Valentine?</h1>
+    <h1 id="title">প্রিয় রিতু, <br> তুমি কি আমার ভ্যালেন্টাইন হবে?</h1>
     
     <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHJpYjR4eHpxeHpxeHpxeHpxeHpxeHpxeHpxeHpxeHpxeHpxeHpxJmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1n/c76IJLufpNwSULPk2m/giphy.gif" 
          class="cat-gif" id="display-gif">
 
     <div id="love-frame">
-        <img src="1000426483.jpg" onerror="this.src='https://via.placeholder.com/200?text=Photo+Not+Found'">
+        <img src="./1000426483.jpg" onerror="this.src='https://via.placeholder.com/200?text=Photo+Error'">
     </div>
 
     <div class="btn-container" id="btns">
-        <img src="https://cdn-icons-png.flaticon.com/512/5291/5291043.png" class="action-btn" onclick="startCelebration()">
-        <img src="https://cdn-icons-png.flaticon.com/512/5291/5291039.png" class="action-btn" id="noBtn" onmouseover="dodgeButton()">
+        <img src="https://cdn-icons-png.flaticon.com/512/5291/5291043.png" class="action-btn" onclick="celebrate()">
+        <img src="https://cdn-icons-png.flaticon.com/512/5291/5291039.png" class="action-btn" id="noBtn" onmouseover="dodge()">
     </div>
 
-    <p id="success-msg" class="success-text">I LOVE YOU RITU ❤️<br>You are my Everything!</p>
+    <p id="success-msg" class="success-text">আমি তোমাকে অনেক ভালোবাসি রিতু! ❤️<br>তুমিই আমার সব কিছু।</p>
 </div>
 
 <script>
-    function startCelebration() {
-        document.getElementById('title').innerText = "Ritu, I Love You!";
+    function celebrate() {
+        // UI Changes
+        document.getElementById('title').innerText = "রিতু, আমি শুধু তোমারই!";
         document.getElementById('display-gif').style.display = 'none';
         document.getElementById('btns').style.display = 'none';
         document.getElementById('love-frame').style.display = 'block';
         document.getElementById('success-msg').style.display = 'block';
 
-        setInterval(spawnHeart, 300);
+        // Start Party Effects
+        setInterval(createConfetti, 100);
         
-        // Voice Message Update
-        const speakText = "I Love You Ritu. You are my everything and my whole world.";
-        const utter = new SpeechSynthesisUtterance(speakText);
-        utter.lang = 'en-US';
-        utter.rate = 0.8;
-        window.speechSynthesis.speak(utter);
+        // Next Gen Voice Sync
+        speak();
     }
 
-    function spawnHeart() {
-        const heart = document.createElement('div');
-        heart.classList.add('floating-heart');
-        heart.innerHTML = "❤️";
-        heart.style.left = Math.random() * 100 + "vw";
-        heart.style.animationDuration = (Math.random() * 2 + 2) + "s";
-        document.body.appendChild(heart);
-        setTimeout(() => heart.remove(), 3000);
+    function speak() {
+        const synth = window.speechSynthesis;
+        // রিতুর জন্য ইমোশনাল বাংলা ভয়েস
+        const text = "আমি তোমাকে অনেক ভালোবাসি রিতু। তুমি আমার সব কিছু এবং তুমিই আমার পুরো পৃথিবী। আই লাভ ইউ সো মাচ।";
+        const utter = new SpeechSynthesisUtterance(text);
+        
+        utter.lang = 'bn-BD'; 
+        utter.rate = 0.85;
+        utter.pitch = 1.1;
+
+        // ব্রাউজারে বাংলা ভয়েস না থাকলে ইংরেজি ফলব্যাক
+        utter.onerror = () => {
+            utter.lang = 'en-US';
+            utter.text = "I love you Ritu. You are my everything and my whole world.";
+            synth.speak(utter);
+        };
+
+        synth.speak(utter);
     }
 
-    function dodgeButton() {
+    function createConfetti() {
+        const c = document.createElement('div');
+        c.classList.add('confetti');
+        c.innerText = ["❤️", "💖", "🌸", "✨", "🔥"][Math.floor(Math.random() * 5)];
+        c.style.left = Math.random() * 100 + "vw";
+        c.style.top = "-5vh";
+        c.style.fontSize = (Math.random() * 20 + 10) + "px";
+        c.style.animationDuration = (Math.random() * 3 + 2) + "s";
+        document.body.appendChild(c);
+        setTimeout(() => c.remove(), 5000);
+    }
+
+    function dodge() {
         const btn = document.getElementById('noBtn');
+        const x = Math.random() * (window.innerWidth - 100);
+        const y = Math.random() * (window.innerHeight - 100);
         btn.style.position = 'fixed';
-        btn.style.left = Math.random() * 80 + 'vw';
-        btn.style.top = Math.random() * 80 + 'vh';
-        document.getElementById('title').innerText = "না বলা বারণ! 😉";
+        btn.style.left = x + 'px';
+        btn.style.top = y + 'px';
+        document.getElementById('title').innerText = "কেন না বলছো? 😉";
     }
 </script>
 
